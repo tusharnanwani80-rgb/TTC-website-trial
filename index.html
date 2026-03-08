@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tushar Tuition Classes (TTC)</title>
+<title>Tushar Tuition Classes</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,20 +19,17 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f7f7f7;
+background:#f4f6fb;
 color:#333;
 }
 
 header{
-background:white;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 8%;
-box-shadow:0 2px 12px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-z-index:1000;
+padding:18px 8%;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
 .logo{
@@ -42,106 +39,96 @@ gap:10px;
 }
 
 .logo img{
-height:55px;
+height:50px;
 }
 
 nav a{
 margin-left:25px;
 text-decoration:none;
-color:#333;
 font-weight:500;
+color:#333;
 }
 
 .hero{
+height:500px;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-height:85vh;
-background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
-url("https://images.unsplash.com/photo-1523580846011-d3a5bc25702b");
-background-size:cover;
-background-position:center;
-color:white;
+background:linear-gradient(135deg,#6fc3ff,#b8f1d8);
 padding:20px;
 }
 
 .hero h1{
-font-size:50px;
+font-size:48px;
 margin-bottom:10px;
 }
 
 .hero p{
 font-size:20px;
-margin-bottom:25px;
 }
 
-.btn{
-background:#e63946;
-color:white;
-padding:14px 30px;
-border-radius:6px;
-text-decoration:none;
-font-weight:500;
+.yellow-section{
+background:#ffd43b;
+padding:80px 8%;
 }
 
-.section{
-padding:70px 10%;
+.section-title{
 text-align:center;
+margin-bottom:50px;
 }
 
-.section h2{
-margin-bottom:20px;
-font-size:32px;
-}
-
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-margin-top:30px;
+.section-title h2{
+font-size:34px;
 }
 
 .card{
+display:flex;
+align-items:center;
 background:white;
-padding:25px;
-border-radius:12px;
-width:260px;
-box-shadow:0 5px 18px rgba(0,0,0,0.08);
-transition:0.3s;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:40px;
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
 }
 
-.card:hover{
-transform:translateY(-6px);
+.card-text{
+flex:1;
+padding:35px;
 }
 
-.card h3{
+.card-text h3{
+font-size:28px;
+margin-bottom:10px;
 color:#e63946;
-margin-bottom:10px;
 }
 
-.subject-icon{
-font-size:30px;
-margin-bottom:10px;
+.card-text p{
+line-height:1.6;
 }
 
-.review-carousel{
-max-width:700px;
-margin:auto;
+.card-image{
+flex:1;
+background:#f1f1f1;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+}
+
+.card-image img{
+max-width:100%;
+border-radius:10px;
 }
 
 .review{
-display:none;
 background:white;
 padding:30px;
-border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
-font-style:italic;
-}
-
-.review.active{
-display:block;
+border-radius:12px;
+margin:30px auto;
+max-width:700px;
+text-align:center;
+box-shadow:0 5px 18px rgba(0,0,0,0.12);
 }
 
 form{
@@ -150,36 +137,29 @@ margin:auto;
 display:flex;
 flex-direction:column;
 gap:15px;
-margin-top:20px;
 }
 
 input,textarea{
 padding:12px;
 border-radius:6px;
 border:1px solid #ccc;
-font-size:15px;
 }
 
 button{
 background:#e63946;
 color:white;
-padding:14px;
 border:none;
+padding:14px;
 border-radius:6px;
 cursor:pointer;
-font-size:16px;
-}
-
-button:hover{
-opacity:0.9;
 }
 
 footer{
 background:#222;
 color:white;
 text-align:center;
-padding:25px;
-margin-top:40px;
+padding:30px;
+margin-top:50px;
 }
 
 .whatsapp{
@@ -188,11 +168,10 @@ bottom:20px;
 right:20px;
 background:#25D366;
 color:white;
-padding:15px 18px;
+padding:15px 20px;
 border-radius:50px;
 text-decoration:none;
-font-weight:bold;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
+font-weight:600;
 }
 
 </style>
@@ -209,7 +188,6 @@ box-shadow:0 4px 12px rgba(0,0,0,0.2);
 </div>
 
 <nav>
-<a href="#about">Why TTC</a>
 <a href="#teachers">Teachers</a>
 <a href="#reviews">Reviews</a>
 <a href="#contact">Contact</a>
@@ -221,81 +199,98 @@ box-shadow:0 4px 12px rgba(0,0,0,0.2);
 <section class="hero">
 
 <div>
-
 <h1>Tushar Tuition Classes</h1>
-
-<p>Concept Based Learning • Small Batches • Personal Attention</p>
-
-<a class="btn" href="#contact">Join Now</a>
-
+<p>Concept Based Learning • Personal Attention • Regular Tests</p>
 </div>
 
 </section>
 
 
-<section id="about" class="section">
+<section class="yellow-section">
 
-<h2>Why Choose TTC</h2>
-
-<div class="cards">
-
-<div class="card">
-<div class="subject-icon">📚</div>
-<h3>Concept Based Learning</h3>
-<p>Strong conceptual understanding for all subjects.</p>
-</div>
-
-<div class="card">
-<div class="subject-icon">📝</div>
-<h3>Regular Tests</h3>
-<p>Frequent tests to monitor student progress.</p>
-</div>
-
-<div class="card">
-<div class="subject-icon">👨‍🏫</div>
-<h3>Personal Attention</h3>
-<p>Small batches ensure every student gets attention.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section id="teachers" class="section">
-
+<div class="section-title">
 <h2>Our Teachers</h2>
+</div>
 
-<div class="cards">
 
 <div class="card">
+
+<div class="card-text">
+
 <h3>Tushar Nanwani</h3>
+
 <p>
+
+Subjects:<br>
 Math<br>
 English<br>
 English Grammar<br>
 Economics
+
 </p>
+
 </div>
 
+<div class="card-image">
+
+<img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644">
+
+</div>
+
+</div>
+
+
+
 <div class="card">
+
+<div class="card-text">
+
 <h3>Mahek Nanwani</h3>
+
 <p>
+
+Subjects:<br>
 History & Civics<br>
 Geography<br>
 Physics<br>
 Chemistry<br>
 Biology
+
 </p>
+
 </div>
 
+<div class="card-image">
+
+<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+
+</div>
+
+</div>
+
+
+
 <div class="card">
+
+<div class="card-text">
+
 <h3>Kajal Nanwani</h3>
+
 <p>
+
+Subjects:<br>
 Hindi<br>
 Marathi<br>
 Vyakaran
+
 </p>
+
+</div>
+
+<div class="card-image">
+
+<img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655">
+
 </div>
 
 </div>
@@ -303,46 +298,32 @@ Vyakaran
 </section>
 
 
-<section id="reviews" class="section">
+<section id="reviews">
+
+<div class="section-title">
 
 <h2>Student Reviews</h2>
 
-<div class="review-carousel">
-
-<div class="review active">
-⭐ ⭐ ⭐ ⭐ ⭐ <br><br>
-"TTC helped me improve my maths concepts and confidence."
 </div>
 
 <div class="review">
-⭐ ⭐ ⭐ ⭐ ⭐ <br><br>
-"Very supportive teachers and regular testing system."
+
+⭐ ⭐ ⭐ ⭐ ⭐  
+"TTC helped me improve my maths concepts."
+
 </div>
 
 <div class="review">
-⭐ ⭐ ⭐ ⭐ ⭐ <br><br>
-"Best tuition classes for concept clarity."
-</div>
+
+⭐ ⭐ ⭐ ⭐ ⭐  
+"Very supportive teachers and regular tests."
 
 </div>
 
 </section>
 
 
-<section class="section">
-
-<h2>Find Us on Google Maps</h2>
-
-<p>
-<a class="btn" href="https://maps.app.goo.gl/fL8MtRx7jBA9QqHu9" target="_blank">
-View Location
-</a>
-</p>
-
-</section>
-
-
-<section id="contact" class="section">
+<section id="contact" style="padding:70px 8%;text-align:center;">
 
 <h2>Admission Enquiry</h2>
 
@@ -360,34 +341,31 @@ View Location
 
 </form>
 
+<br><br>
+
+<a href="https://maps.app.goo.gl/fL8MtRx7jBA9QqHu9" target="_blank">
+
+View Location on Google Maps
+
+</a>
+
 </section>
 
 
 <footer>
 
 <p>Tushar Tuition Classes</p>
+
 <p>Concept Based Learning for Classes 1–9</p>
 
 </footer>
 
 
 <a class="whatsapp" href="https://wa.me/917517445450" target="_blank">
-WhatsApp
+
+WhatsApp Chat
+
 </a>
-
-
-<script>
-
-let reviews=document.querySelectorAll(".review");
-let index=0;
-
-setInterval(()=>{
-reviews[index].classList.remove("active");
-index=(index+1)%reviews.length;
-reviews[index].classList.add("active");
-},3500);
-
-</script>
 
 </body>
 </html>
