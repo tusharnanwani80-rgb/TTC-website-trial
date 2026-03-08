@@ -1,472 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TTC Quiz - Tenses</title>
+<title>Tushar Tuition Classes</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
-font-family:'Poppins',sans-serif;
-background:#f5f1e8;
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8f9fa;
+scroll-behavior:smooth;
+color:#333;
+}
+
+/* NAVBAR */
+
+nav{
 display:flex;
-justify-content:center;
 align-items:center;
-min-height:100vh;
-}
-
-.container{
-width:90%;
-max-width:700px;
-text-align:center;
-}
-
-.logo{
-width:90px;
-display:block;
-margin:auto;
-margin-bottom:10px;
-}
-
-.card{
+justify-content:space-between;
+padding:15px 30px;
 background:white;
-border-radius:20px;
-padding:30px;
-box-shadow:0 12px 25px rgba(0,0,0,0.12);
-}
-
-button{
-padding:12px 22px;
-border:none;
-border-radius:12px;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 8px 16px rgba(0,0,0,0.1);
-transition:0.25s;
-}
-
-button:hover{
-transform:translateY(-3px);
-}
-
-.startBtn{
-background:#77e0c4;
-}
-
-.option{
-display:block;
-margin:10px 0;
-background:#eee;
-width:100%;
-}
-
-.correct{
-background:#7be495 !important;
-}
-
-.wrong{
-background:#ff7b7b !important;
-}
-
-.progress{
-width:100%;
-height:14px;
-background:#eee;
-border-radius:10px;
-margin:15px 0;
-overflow:hidden;
-}
-
-.bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#77e0c4,#b59cff);
-transition:0.4s;
-}
-
-.nextBtn{
-background:#ff8a8a;
-margin-top:15px;
-display:none;
-}
-
-.explanation{
-margin-top:15px;
-color:#444;
-font-size:14px;
-}
-
-.result{
-display:none;
-}
-
-.footer{
-margin-top:20px;
-font-size:12px;
-color:#777;
-}
-
-input{
-padding:10px;
-border-radius:10px;
-border:1px solid #ddd;
-width:80%;
-margin-top:10px;
-}
-
-.floating{
-position:fixed;
-right:18px;
-bottom:20px;
-display:flex;
-flex-direction:column;
-gap:14px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
 z-index:1000;
 }
 
-.floating a{
-width:56px;
-height:56px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-background:white;
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
+.logo{
+height:60px;
 }
 
-.floating img{
-width:30px;
-height:30px;
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+font-weight:500;
+color:#333;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
+background:linear-gradient(135deg,#e0fff7,#fef4ff);
+}
+
+.hero img{
+width:110px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:18px;
+margin-bottom:25px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+padding:12px 24px;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+background:#00bfa6;
+color:white;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 15px rgba(0,0,0,0.15);
+}
+
+/* SECTION */
+
+section{
+padding:70px 10%;
+}
+
+.section-title{
+text-align:center;
+font-size:32px;
+margin-bottom:40px;
+}
+
+/* TEACHERS */
+
+.teachers{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.teacher-card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+text-align:center;
+transition:0.3s;
+}
+
+.teacher-card:hover{
+transform:translateY(-5px);
+}
+
+.teacher-card h3{
+margin-bottom:10px;
+}
+
+/* REVIEWS */
+
+.carousel{
+display:flex;
+overflow:hidden;
+position:relative;
+max-width:600px;
+margin:auto;
+}
+
+.review{
+min-width:100%;
+text-align:center;
+padding:30px;
+background:white;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* CONTACT */
+
+.contact{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.contact form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input, textarea{
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+/* FOOTER */
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+/* FLOAT BUTTONS */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.rateus{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#ff9800;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+
+@media(max-width:800px){
+
+.contact{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:30px;
+}
+
 }
 
 </style>
 </head>
 
-
 <body>
 
-<div class="container">
+<!-- NAVBAR -->
 
-<!-- ENTRY SCREEN -->
-<div id="entry" class="card">
-
-<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
-
-<h2>Enter Your Name</h2>
-
-<input id="nameInput" placeholder="Your name">
-
-<br><br>
-
-<button class="startBtn" onclick="saveName()">Continue</button>
-
-</div>
-
-
-<!-- WELCOME SCREEN -->
-<div id="welcome" class="card" style="display:none">
+<nav>
 
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
 
-<h2 id="welcomeText"></h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#teachers">Teachers</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
-<button class="startBtn" onclick="startQuiz()">Start Quiz</button>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png">
+
+<h1>Tushar Tuition Classes</h1>
+
+<p>Classes 1st to 9th | State Board • CBSE • ICSE</p>
+
+<div class="hero-buttons">
+
+<a href="#contact"><button class="btn">Contact Us</button></a>
+
+<a href="https://local.google.com/place?placeid=ChIJTfJm1n1_1DsR1SSzAnRm6UA&utm_medium=noren&utm_source=gbp&utm_campaign=2025">
+<button class="btn">Rate Us</button></a>
 
 </div>
 
+</section>
 
-<!-- QUIZ SCREEN -->
-<div id="quiz" class="card" style="display:none">
+<!-- ABOUT -->
 
-<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
+<section id="about">
 
-<div class="progress">
-<div class="bar" id="bar"></div>
+<h2 class="section-title">About TTC</h2>
+
+<p style="text-align:center;max-width:700px;margin:auto;">
+Tushar Tuition Classes provides quality education for students from Class 1st to 9th across State Board, CBSE and ICSE. Our mission is to build strong conceptual understanding with personal attention and a supportive learning environment.
+</p>
+
+</section>
+
+<!-- TEACHERS -->
+
+<section id="teachers">
+
+<h2 class="section-title">Meet The Teachers</h2>
+
+<div class="teachers">
+
+<div class="teacher-card">
+<h3>Tushar Nanwani</h3>
+<p>Math</p>
+<p>English</p>
+<p>English Grammar</p>
+<p>Economics</p>
 </div>
 
-<h3 id="question"></h3>
+<div class="teacher-card">
+<h3>Mahek Nanwani</h3>
+<p>History & Civics</p>
+<p>Geography</p>
+<p>Physics</p>
+<p>Chemistry</p>
+<p>Biology</p>
+</div>
 
-<div id="options"></div>
-
-<div class="explanation" id="explanation"></div>
-
-<button class="nextBtn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+<div class="teacher-card">
+<h3>Kajal Nanwani</h3>
+<p>Hindi</p>
+<p>Marathi</p>
+<p>Vyakaran</p>
+</div>
 
 </div>
 
+</section>
 
-<!-- RESULT SCREEN -->
-<div id="result" class="card result">
+<!-- REVIEWS -->
 
-<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
+<section id="reviews">
 
-<h2>Quiz Result</h2>
+<h2 class="section-title">Student & Parent Reviews</h2>
 
-<h3 id="score"></h3>
+<div class="carousel">
 
-<p id="message"></p>
+<div class="review">
+<p>"My child improved a lot in mathematics after joining TTC."</p>
+</div>
 
-<button onclick="restartQuiz()">Restart Quiz</button>
+<div class="review">
+<p>"Teachers explain concepts very clearly."</p>
+</div>
 
-<div style="margin-top:18px">
+<div class="review">
+<p>"Best tuition classes for school students."</p>
+</div>
 
-<p>Enjoyed the quiz? Please rate us ⭐</p>
+</div>
 
-<a href="https://maps.app.goo.gl/gp7xCdhtr53HhHoc6" target="_blank">
+</section>
 
-<button style="background:#b59cff;color:white;">Rate Here</button>
+<!-- CONTACT -->
 
+<section id="contact">
+
+<h2 class="section-title">Contact Us</h2>
+
+<div class="contact">
+
+<div>
+
+<p><strong>Phone:</strong> 7517445450</p>
+
+<p><strong>Boards:</strong> State Board, CBSE, ICSE</p>
+
+<p><strong>Classes:</strong> 1st to 9th</p>
+
+<a href="https://maps.app.goo.gl/fL8MtRx7jBA9QqHu9">
+<button class="btn">Open in Google Maps</button>
 </a>
 
 </div>
 
-<div class="footer">
-Powered by TTC: Tushar Tuition Classes, Wardha
-</div>
+<form>
+
+<input placeholder="First Name">
+
+<input placeholder="Last Name">
+
+<input placeholder="Email">
+
+<textarea placeholder="Message"></textarea>
+
+<button class="btn">Send Message</button>
+
+</form>
 
 </div>
 
-</div>
+</section>
 
+<!-- FOOTER -->
 
-<!-- FLOATING BUTTONS -->
-<div class="floating">
+<footer>
 
-<a href="https://wa.me/917517445450" target="_blank">
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" width="80">
 
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+<p>Tushar Tuition Classes</p>
 
-</a>
+<p>Classes 1st to 9th</p>
 
-<a href="https://maps.app.goo.gl/gp7xCdhtr53HhHoc6" target="_blank">
+<p>State Board | CBSE | ICSE</p>
 
-<img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+<p>Contact: 7517445450</p>
 
-</a>
+</footer>
 
-</div>
+<!-- FLOAT BUTTONS -->
 
+<a class="whatsapp" href="https://wa.me/917517445450">WhatsApp</a>
 
-<script>
-
-let name = localStorage.getItem("ttcName")
-
-if(name){
-document.getElementById("entry").style.display="none"
-showWelcome(name)
-}
-
-function saveName(){
-
-name=document.getElementById("nameInput").value
-
-localStorage.setItem("ttcName",name)
-
-showWelcome(name)
-
-}
-
-function showWelcome(n){
-
-document.getElementById("entry").style.display="none"
-document.getElementById("welcome").style.display="block"
-
-document.getElementById("welcomeText").innerText="Welcome, TTC Champ "+n
-
-}
-
-
-function fireConfetti(){
-
-confetti({
-particleCount:80,
-spread:70,
-origin:{ y:0.6 }
-})
-
-}
-
-
-const questions=[
-
-{
-question:"She ___ to school every day.",
-options:["go","goes","going","gone"],
-correct:1,
-explanation:"Simple Present tense uses 'goes' for third person singular."
-},
-
-{
-question:"I ___ my homework yesterday.",
-options:["did","do","done","doing"],
-correct:0,
-explanation:"Past tense of do is 'did'."
-},
-
-{
-question:"They ___ playing football now.",
-options:["is","are","was","be"],
-correct:1,
-explanation:"Present continuous uses 'are' with plural subjects."
-},
-
-{
-question:"He ___ finished the work.",
-options:["have","has","had","having"],
-correct:1,
-explanation:"Present perfect uses 'has' with he/she/it."
-},
-
-{
-question:"We ___ watching a movie tomorrow.",
-options:["will","will be","were","be"],
-correct:1,
-explanation:"Future continuous uses 'will be'."
-}
-
-]
-
-
-questions.sort(()=>Math.random()-0.5)
-
-questions.forEach(q=>q.options.sort(()=>Math.random()-0.5))
-
-
-let current=0
-let score=0
-
-
-function startQuiz(){
-
-document.getElementById("welcome").style.display="none"
-document.getElementById("quiz").style.display="block"
-
-loadQuestion()
-
-}
-
-
-function loadQuestion(){
-
-let q=questions[current]
-
-document.getElementById("question").innerText=q.question
-
-let optionsHTML=""
-
-q.options.forEach((opt,i)=>{
-
-optionsHTML+=`<button class="option" onclick="selectOption(${i},this)">${opt}</button>`
-
-})
-
-document.getElementById("options").innerHTML=optionsHTML
-
-document.getElementById("explanation").innerHTML=""
-
-document.getElementById("nextBtn").style.display="none"
-
-document.getElementById("bar").style.width=(current/questions.length)*100+"%"
-
-}
-
-
-function selectOption(i,btn){
-
-let q=questions[current]
-
-let buttons=document.querySelectorAll(".option")
-
-buttons.forEach(b=>b.disabled=true)
-
-if(q.options[i]===questions[current].options[questions[current].correct]){
-
-btn.classList.add("correct")
-
-score++
-
-fireConfetti()
-
-}else{
-
-btn.classList.add("wrong")
-
-buttons[q.correct].classList.add("correct")
-
-}
-
-document.getElementById("explanation").innerText=q.explanation
-
-document.getElementById("nextBtn").style.display="inline-block"
-
-}
-
-
-function nextQuestion(){
-
-current++
-
-if(current<questions.length){
-
-loadQuestion()
-
-}else{
-
-showResult()
-
-}
-
-}
-
-
-function showResult(){
-
-document.getElementById("quiz").style.display="none"
-document.getElementById("result").style.display="block"
-
-document.getElementById("score").innerText=score+" / "+questions.length
-
-let percent=(score/questions.length)*100
-
-if(percent>=75){
-
-document.getElementById("message").innerText="Well Done, "+name+"! You’re a true TTC Champ!"
-
-fireConfetti()
-setTimeout(fireConfetti,400)
-setTimeout(fireConfetti,800)
-
-}else{
-
-document.getElementById("message").innerText="Good attempt! Keep practicing."
-
-}
-
-}
-
-
-function restartQuiz(){
-
-current=0
-score=0
-
-document.getElementById("result").style.display="none"
-document.getElementById("quiz").style.display="block"
-
-loadQuestion()
-
-}
-
-</script>
+<a class="rateus" href="https://local.google.com/place?placeid=ChIJTfJm1n1_1DsR1SSzAnRm6UA&utm_medium=noren&utm_source=gbp&utm_campaign=2025">Rate Us</a>
 
 </body>
 </html>
