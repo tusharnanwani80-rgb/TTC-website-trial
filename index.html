@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -102,31 +104,6 @@ color:#444;
 font-size:14px;
 }
 
-.floating{
-position:fixed;
-right:15px;
-bottom:20px;
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-
-.floating a{
-width:50px;
-height:50px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-text-decoration:none;
-font-size:22px;
-box-shadow:0 6px 15px rgba(0,0,0,0.2);
-}
-
-.whatsapp{background:#25D366;}
-.map{background:#ff6b6b;}
-
 .result{
 display:none;
 }
@@ -145,12 +122,43 @@ width:80%;
 margin-top:10px;
 }
 
+.floating{
+position:fixed;
+right:18px;
+bottom:20px;
+display:flex;
+flex-direction:column;
+gap:14px;
+z-index:1000;
+}
+
+.floating a{
+width:56px;
+height:56px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:white;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.floating img{
+width:30px;
+height:30px;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
 <div class="container">
+
+
+<!-- ENTRY SCREEN -->
 
 <div id="entry" class="card">
 
@@ -167,6 +175,8 @@ margin-top:10px;
 </div>
 
 
+<!-- WELCOME SCREEN -->
+
 <div id="welcome" class="card" style="display:none">
 
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
@@ -177,6 +187,8 @@ margin-top:10px;
 
 </div>
 
+
+<!-- QUIZ SCREEN -->
 
 <div id="quiz" class="card" style="display:none">
 
@@ -197,6 +209,8 @@ margin-top:10px;
 </div>
 
 
+<!-- RESULT SCREEN -->
+
 <div id="result" class="card result">
 
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
@@ -209,6 +223,20 @@ margin-top:10px;
 
 <button onclick="restartQuiz()">Restart Quiz</button>
 
+
+<div style="margin-top:18px">
+
+<p>Enjoyed the quiz? Please rate us ⭐</p>
+
+<a href="https://maps.app.goo.gl/gp7xCdhtr53HhHoc6" target="_blank">
+
+<button style="background:#b59cff;color:white;">Rate Here</button>
+
+</a>
+
+</div>
+
+
 <div class="footer">
 Powered by TTC: Tushar Tuition Classes, Wardha
 </div>
@@ -218,11 +246,21 @@ Powered by TTC: Tushar Tuition Classes, Wardha
 </div>
 
 
+<!-- FLOATING ICONS -->
+
 <div class="floating">
 
-<a class="whatsapp" href="https://wa.me/917517445450">W</a>
+<a href="https://wa.me/917517445450" target="_blank">
 
-<a class="map" href="https://maps.app.goo.gl/gp7xCdhtr53HhHoc6">M</a>
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+
+</a>
+
+<a href="https://maps.app.goo.gl/gp7xCdhtr53HhHoc6" target="_blank">
+
+<img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+
+</a>
 
 </div>
 
@@ -248,11 +286,14 @@ showWelcome(name)
 
 function showWelcome(n){
 
+document.getElementById("entry").style.display="none"
+
 document.getElementById("welcome").style.display="block"
 
 document.getElementById("welcomeText").innerText="Welcome, TTC Champ "+n
 
 }
+
 
 const questions=[
 
@@ -296,6 +337,7 @@ explanation:"Future continuous uses 'will be'."
 let current=0
 let score=0
 
+
 function startQuiz(){
 
 document.getElementById("welcome").style.display="none"
@@ -305,6 +347,7 @@ document.getElementById("quiz").style.display="block"
 loadQuestion()
 
 }
+
 
 function loadQuestion(){
 
@@ -329,6 +372,7 @@ document.getElementById("nextBtn").style.display="none"
 document.getElementById("bar").style.width=(current/questions.length)*100+"%"
 
 }
+
 
 function selectOption(i,btn){
 
@@ -358,6 +402,7 @@ document.getElementById("nextBtn").style.display="inline-block"
 
 }
 
+
 function nextQuestion(){
 
 current++
@@ -373,6 +418,7 @@ showResult()
 }
 
 }
+
 
 function showResult(){
 
@@ -396,6 +442,7 @@ document.getElementById("message").innerText="Good attempt! Keep practicing."
 
 }
 
+
 function restartQuiz(){
 
 current=0
@@ -412,4 +459,5 @@ loadQuestion()
 </script>
 
 </body>
+
 </html>
