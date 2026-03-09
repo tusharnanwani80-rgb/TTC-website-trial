@@ -4,404 +4,113 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tushar Tuition Classes</title>
+<title>TTC Contact</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#f8f9fa;
-scroll-behavior:smooth;
-color:#333;
-}
-
-/* NAVBAR */
-
-nav{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:15px 30px;
-background:white;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.logo{
-height:60px;
-}
-
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-font-weight:500;
-color:#333;
-}
-
-/* HERO */
-
-.hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:30px;
-background:linear-gradient(135deg,#e0fff7,#fef4ff);
-}
-
-.hero img{
-width:110px;
-margin-bottom:20px;
-}
-
-.hero h1{
-font-size:40px;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:18px;
-margin-bottom:25px;
-}
-
-.hero-buttons{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.btn{
-padding:12px 24px;
-border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-background:#00bfa6;
-color:white;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:translateY(-2px);
-box-shadow:0 8px 15px rgba(0,0,0,0.15);
-}
-
-/* SECTION */
-
-section{
-padding:70px 10%;
-}
-
-.section-title{
-text-align:center;
-font-size:32px;
-margin-bottom:40px;
-}
-
-/* TEACHERS */
-
-.teachers{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.teacher-card{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-text-align:center;
-transition:0.3s;
-}
-
-.teacher-card:hover{
-transform:translateY(-5px);
-}
-
-.teacher-card h3{
-margin-bottom:10px;
-}
-
-/* REVIEWS */
-
-.carousel{
-display:flex;
-overflow:hidden;
-position:relative;
-max-width:600px;
-margin:auto;
-}
-
-.review{
-min-width:100%;
-text-align:center;
-padding:30px;
-background:white;
-border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-}
-
-/* CONTACT */
-
-.contact{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-}
-
-.contact form{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input, textarea{
-padding:12px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-/* FOOTER */
-
-footer{
-background:#222;
-color:white;
-text-align:center;
-padding:30px;
-}
-
-/* FLOAT BUTTONS */
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25d366;
-color:white;
-padding:15px 20px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.rateus{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#ff9800;
-color:white;
-padding:15px 20px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-}
-
-@media(max-width:800px){
-
-.contact{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:30px;
-}
-
-}
-
-</style>
 </head>
 
-<body>
+<body class="bg-gray-50">
 
-<!-- NAVBAR -->
-
-<nav>
-
-<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
-
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#teachers">Teachers</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-
-</nav>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png">
-
-<h1>Tushar Tuition Classes</h1>
-
-<p>Classes 1st to 9th | State Board • CBSE • ICSE</p>
-
-<div class="hero-buttons">
-
-<a href="#contact"><button class="btn">Contact Us</button></a>
-
-<a href="https://local.google.com/place?placeid=ChIJTfJm1n1_1DsR1SSzAnRm6UA&utm_medium=noren&utm_source=gbp&utm_campaign=2025">
-<button class="btn">Rate Us</button></a>
-
+<!-- LOGO -->
+<div class="text-center mt-10">
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="mx-auto w-24">
 </div>
 
-</section>
+<section class="py-20 px-6">
 
-<!-- ABOUT -->
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
 
-<section id="about">
-
-<h2 class="section-title">About TTC</h2>
-
-<p style="text-align:center;max-width:700px;margin:auto;">
-Tushar Tuition Classes provides quality education for students from Class 1st to 9th across State Board, CBSE and ICSE. Our mission is to build strong conceptual understanding with personal attention and a supportive learning environment.
-</p>
-
-</section>
-
-<!-- TEACHERS -->
-
-<section id="teachers">
-
-<h2 class="section-title">Meet The Teachers</h2>
-
-<div class="teachers">
-
-<div class="teacher-card">
-<h3>Tushar Nanwani</h3>
-<p>Math</p>
-<p>English</p>
-<p>English Grammar</p>
-<p>Economics</p>
-</div>
-
-<div class="teacher-card">
-<h3>Mahek Nanwani</h3>
-<p>History & Civics</p>
-<p>Geography</p>
-<p>Physics</p>
-<p>Chemistry</p>
-<p>Biology</p>
-</div>
-
-<div class="teacher-card">
-<h3>Kajal Nanwani</h3>
-<p>Hindi</p>
-<p>Marathi</p>
-<p>Vyakaran</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- REVIEWS -->
-
-<section id="reviews">
-
-<h2 class="section-title">Student & Parent Reviews</h2>
-
-<div class="carousel">
-
-<div class="review">
-<p>"My child improved a lot in mathematics after joining TTC."</p>
-</div>
-
-<div class="review">
-<p>"Teachers explain concepts very clearly."</p>
-</div>
-
-<div class="review">
-<p>"Best tuition classes for school students."</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-<h2 class="section-title">Contact Us</h2>
-
-<div class="contact">
-
+<!-- LEFT SIDE -->
 <div>
 
-<p><strong>Phone:</strong> 7517445450</p>
+<h1 class="text-4xl font-bold mb-4">
+Contact Us
+</h1>
 
-<p><strong>Boards:</strong> State Board, CBSE, ICSE</p>
+<p class="text-gray-600 mb-8">
+We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!
+</p>
 
-<p><strong>Classes:</strong> 1st to 9th</p>
+<h3 class="text-xl font-semibold mb-4">
+Contact Details
+</h3>
 
-<a href="https://maps.app.goo.gl/fL8MtRx7jBA9QqHu9">
-<button class="btn">Open in Google Maps</button>
+<ul class="space-y-3 list-disc ml-5">
+
+<li>
+<b>Phone:</b> +91 9876543210
+</li>
+
+<li>
+<b>Email:</b>
+<a href="mailto:ttctuition@gmail.com" class="text-blue-600 underline">
+ttctuition@gmail.com
 </a>
+</li>
+
+<li>
+<b>Website:</b>
+<a href="#" class="text-blue-600 underline">
+TTC Tuition Classes
+</a>
+</li>
+
+</ul>
 
 </div>
 
-<form>
 
-<input placeholder="First Name">
+<!-- FORM -->
+<div class="bg-white rounded-xl shadow-lg p-8 space-y-6">
 
-<input placeholder="Last Name">
+<div class="grid grid-cols-2 gap-4">
 
-<input placeholder="Email">
+<div>
+<label class="text-sm font-medium">First Name</label>
+<input type="text" placeholder="First Name"
+class="w-full border rounded-md p-2 mt-1">
+</div>
 
-<textarea placeholder="Message"></textarea>
+<div>
+<label class="text-sm font-medium">Last Name</label>
+<input type="text" placeholder="Last Name"
+class="w-full border rounded-md p-2 mt-1">
+</div>
 
-<button class="btn">Send Message</button>
+</div>
 
-</form>
+
+<div>
+<label class="text-sm font-medium">Email</label>
+<input type="email" placeholder="Email"
+class="w-full border rounded-md p-2 mt-1">
+</div>
+
+
+<div>
+<label class="text-sm font-medium">Subject</label>
+<input type="text" placeholder="Subject"
+class="w-full border rounded-md p-2 mt-1">
+</div>
+
+
+<div>
+<label class="text-sm font-medium">Message</label>
+<textarea rows="4" placeholder="Type your message"
+class="w-full border rounded-md p-2 mt-1"></textarea>
+</div>
+
+
+<button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md">
+Send Message
+</button>
+
+</div>
 
 </div>
 
 </section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" width="80">
-
-<p>Tushar Tuition Classes</p>
-
-<p>Classes 1st to 9th</p>
-
-<p>State Board | CBSE | ICSE</p>
-
-<p>Contact: 7517445450</p>
-
-</footer>
-
-<!-- FLOAT BUTTONS -->
-
-<a class="whatsapp" href="https://wa.me/917517445450">WhatsApp</a>
-
-<a class="rateus" href="https://local.google.com/place?placeid=ChIJTfJm1n1_1DsR1SSzAnRm6UA&utm_medium=noren&utm_source=gbp&utm_campaign=2025">Rate Us</a>
 
 </body>
 </html>
