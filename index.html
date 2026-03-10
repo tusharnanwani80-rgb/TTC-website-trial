@@ -17,7 +17,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 min-height:100vh;
-color:#333;
 }
 
 .app{
@@ -38,9 +37,21 @@ width:85px;
 margin-bottom:10px;
 }
 
-h2,h3{
-margin:10px 0;
+.option{
+background:#f3f3f3;
+margin:8px 0;
+padding:12px;
+border-radius:12px;
+cursor:pointer;
+transition:0.25s;
 }
+
+.option:hover{transform:scale(1.04)}
+
+.correct{background:#c8f7c5}
+.wrong{background:#ffd0d0}
+
+.hidden{display:none}
 
 button{
 padding:12px 22px;
@@ -55,43 +66,18 @@ background:#4fd1c5;
 color:white;
 }
 
-.secondary{
-background:#ff7a7a;
+.share{
+background:#25D366;
 color:white;
+margin-top:10px;
 }
 
-.option{
-background:#f3f3f3;
-margin:8px 0;
-padding:12px;
-border-radius:12px;
-cursor:pointer;
-transition:0.25s;
-}
-
-.option:hover{
-transform:scale(1.04);
-}
-
-.correct{
-background:#c8f7c5;
-}
-
-.wrong{
-background:#ffd0d0;
-}
-
-.hidden{
-display:none;
-}
-
-.slide{
-animation:slide 0.4s ease;
-}
-
-@keyframes slide{
-from{opacity:0;transform:translateX(30px)}
-to{opacity:1;transform:translateX(0)}
+.rating{
+background:#6c63ff;
+color:white;
+margin-top:10px;
+position:relative;
+overflow:hidden;
 }
 
 .progress{
@@ -115,27 +101,17 @@ margin-top:10px;
 color:#555;
 }
 
-.result{
-font-size:22px;
-margin-top:10px;
+.star{
+position:absolute;
+color:gold;
+font-size:12px;
+animation:starburst 800ms forwards;
+pointer-events:none;
 }
 
-.share{
-background:#25D366;
-color:white;
-margin-top:10px;
-}
-
-.rating{
-background:#6c63ff;
-color:white;
-margin-top:10px;
-}
-
-.quiz-meta{
-font-size:13px;
-color:#777;
-margin-bottom:10px;
+@keyframes starburst{
+0%{opacity:1;transform:translate(0,0) scale(1)}
+100%{opacity:0;transform:translate(var(--x),var(--y)) scale(0)}
 }
 
 </style>
@@ -146,6 +122,7 @@ margin-bottom:10px;
 <div class="app">
 
 <!-- NAME SCREEN -->
+
 <div id="nameScreen" class="card">
 
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
@@ -161,29 +138,29 @@ style="padding:10px;width:90%;border-radius:8px;border:1px solid #ccc">
 
 </div>
 
-<!-- WELCOME SCREEN -->
+
+<!-- WELCOME -->
+
 <div id="welcomeScreen" class="card hidden">
 
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
 
 <h2 id="welcomeText"></h2>
 
-<div class="quiz-meta">
-English – Tenses Quiz
-</div>
+<div>English – Tenses Quiz</div>
+
+<br>
 
 <button class="primary" onclick="startQuiz()">Start Quiz</button>
 
 </div>
 
-<!-- QUIZ SCREEN -->
-<div id="quizScreen" class="card hidden slide">
+
+<!-- QUIZ -->
+
+<div id="quizScreen" class="card hidden">
 
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
-
-<div class="quiz-meta">
-Subject: English | Chapter: Tenses
-</div>
 
 <div class="progress">
 <div class="bar" id="progressBar"></div>
@@ -203,32 +180,33 @@ Next Question
 
 </div>
 
-<!-- RESULT SCREEN -->
+
+<!-- RESULT -->
+
 <div id="resultScreen" class="card hidden">
 
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
 
-<div class="result" id="scoreText"></div>
+<h2 id="scoreText"></h2>
 
 <div id="message"></div>
 
-<button class="share" onclick="shareWhatsApp()">
-Share on WhatsApp
-</button>
+<br>
 
-<button class="rating" onclick="rateUs()">
+<button class="share" onclick="shareWhatsApp()">Share on WhatsApp</button>
+
+<button id="ratingBtn" class="rating">
 Click Me
 </button>
 
 <br><br>
 
-<button class="primary" onclick="restartQuiz()">
-Restart Quiz
-</button>
+<button class="primary" onclick="restartQuiz()">Restart Quiz</button>
 
 <br><br>
 
-<!-- Elfsight Google Reviews -->
+<!-- Google Reviews Widget -->
+
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-e87fdd6e-f4b8-4807-89b4-ecc80ca4f3c0" data-elfsight-app-lazy></div>
 
@@ -243,9 +221,13 @@ Restart Quiz
 const subjectName="English"
 const chapterName="Tenses"
 
-/* USER */
+/* AUTO NAME */
 
-let username=""
+let username=localStorage.getItem("ttc_name") || ""
+
+if(username){
+document.getElementById("username").value=username
+}
 
 /* QUIZ DATA */
 
@@ -260,25 +242,25 @@ explanation:"'She' is third person singular, so we use 'goes'."
 question:"I ____ my homework yesterday.",
 options:["did","do","done","doing"],
 correctIndex:0,
-explanation:"'Yesterday' indicates past tense so 'did' is correct."
+explanation:"'Yesterday' indicates past tense."
 },
 {
 question:"They ____ playing football.",
 options:["is","am","are","be"],
 correctIndex:2,
-explanation:"Plural subject 'they' requires 'are'."
+explanation:"Plural subject requires 'are'."
 },
 {
 question:"We ____ dinner now.",
 options:["eat","eats","are eating","ate"],
 correctIndex:2,
-explanation:"'Now' indicates present continuous tense."
+explanation:"'Now' indicates present continuous."
 },
 {
 question:"He ____ a movie tomorrow.",
 options:["watch","watched","will watch","watching"],
 correctIndex:2,
-explanation:"'Tomorrow' indicates future tense."
+explanation:"Future tense uses 'will watch'."
 }
 ]
 
@@ -286,13 +268,9 @@ let questions=[]
 let index=0
 let score=0
 
-/* UTIL */
-
 function shuffle(arr){
 return arr.sort(()=>Math.random()-0.5)
 }
-
-/* NAME FLOW */
 
 function startWelcome(){
 
@@ -310,8 +288,6 @@ document.getElementById("welcomeText").innerText=
 
 }
 
-/* QUIZ START */
-
 function startQuiz(){
 
 document.getElementById("welcomeScreen").classList.add("hidden")
@@ -322,8 +298,6 @@ questions=shuffle([...quizData])
 loadQuestion()
 
 }
-
-/* LOAD QUESTION */
 
 function loadQuestion(){
 
@@ -357,8 +331,6 @@ document.getElementById("progressBar").style.width=
 
 }
 
-/* SELECT OPTION */
-
 function selectOption(el,opt,q){
 
 let options=document.querySelectorAll(".option")
@@ -372,11 +344,7 @@ if(opt===correct){
 el.classList.add("correct")
 score++
 
-confetti({
-particleCount:80,
-spread:60,
-origin:{y:0.6}
-})
+confetti({particleCount:80,spread:60})
 
 }else{
 
@@ -395,8 +363,6 @@ document.getElementById("nextBtn").classList.remove("hidden")
 
 }
 
-/* NEXT QUESTION */
-
 function nextQuestion(){
 
 index++
@@ -410,8 +376,6 @@ loadQuestion()
 
 }
 
-/* RESULT */
-
 function showResult(){
 
 document.getElementById("quizScreen").classList.add("hidden")
@@ -420,31 +384,25 @@ document.getElementById("resultScreen").classList.remove("hidden")
 document.getElementById("scoreText").innerText=
 score+" / "+questions.length
 
-if(score/questions.length>=0.75){
+let percent=(score/questions.length)*100
+
+let feedback=""
+
+if(percent>=90) feedback="Excellent performance!"
+else if(percent>=75) feedback="Very Good!"
+else if(percent>=50) feedback="Needs Practice."
+else feedback="Revise the chapter."
 
 document.getElementById("message").innerText=
-"Well Done, "+username+"! You're a true TTC Champ!"
+feedback+" Well done "+username+"!"
 
-confetti({
-particleCount:220,
-spread:120
-})
-
-}else{
-
-document.getElementById("message").innerText=
-"Good effort "+username+"! Keep practicing."
+confetti({particleCount:200,spread:120})
 
 }
-
-}
-
-/* WHATSAPP SHARE */
 
 function shareWhatsApp(){
 
 let message=
-
 `TTC Quiz Result
 
 Student Name: ${username}
@@ -453,9 +411,7 @@ Subject: ${subjectName}
 
 Chapter: ${chapterName}
 
-Quiz Score: ${score}/${questions.length}
-
-Try the TTC Quiz!`
+Quiz Score: ${score}/${questions.length}`
 
 let url="https://wa.me/?text="+encodeURIComponent(message)
 
@@ -463,17 +419,40 @@ window.open(url)
 
 }
 
-/* GOOGLE RATING */
-
-function rateUs(){
-window.open("https://g.page/r/YOURGOOGLERATINGLINK")
-}
-
-/* RESTART */
-
 function restartQuiz(){
 location.reload()
 }
+
+/* STAR PARTICLE BUTTON */
+
+document.getElementById("ratingBtn").addEventListener("click",function(e){
+
+for(let i=0;i<12;i++){
+
+let star=document.createElement("div")
+star.className="star"
+star.innerText="★"
+
+let x=(Math.random()*120-60)+"px"
+let y=(Math.random()*-120)+"px"
+
+star.style.setProperty("--x",x)
+star.style.setProperty("--y",y)
+
+star.style.left="50%"
+star.style.top="50%"
+
+this.appendChild(star)
+
+setTimeout(()=>star.remove(),800)
+
+}
+
+setTimeout(()=>{
+window.open("https://g.page/r/CdUkswJ0ZulAEBE/review")
+},300)
+
+})
 
 </script>
 
