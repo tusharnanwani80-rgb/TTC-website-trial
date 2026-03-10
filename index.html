@@ -11,8 +11,8 @@
 
 body{
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:linear-gradient(135deg,#5f2eea,#7b4dff);
+font-family: "Segoe UI", sans-serif;
+background:#f6f4f8;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -20,147 +20,112 @@ height:100vh;
 color:#333;
 }
 
-.quiz-container{
-width:360px;
-text-align:center;
-}
-
-.logo{
-width:90px;
-margin-bottom:10px;
-animation:float 3s infinite ease-in-out;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-100%{transform:translateY(0)}
-}
-
-.top-bar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-color:white;
-margin-bottom:10px;
-}
-
-.timer{
-background:rgba(255,255,255,0.2);
-padding:8px 14px;
-border-radius:20px;
-font-weight:bold;
-}
-
-.progress{
-width:100%;
-height:10px;
-background:rgba(255,255,255,0.2);
-border-radius:10px;
-margin-bottom:15px;
-overflow:hidden;
-}
-
-.progress-bar{
-height:10px;
-width:0%;
-background:#4caf50;
-transition:width 0.5s;
+.app{
+width:380px;
+max-width:95%;
 }
 
 .card{
 background:white;
-padding:20px;
+padding:25px;
 border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-animation:fadein 0.6s;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+text-align:center;
 }
 
-@keyframes fadein{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
+.logo{
+width:80px;
+margin-bottom:10px;
 }
 
-.category{
-color:#999;
-font-size:14px;
+button{
+padding:12px 22px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:15px;
 }
 
-.question{
-font-size:18px;
-margin:15px 0;
+.primary{
+background:#58d5c2;
+color:white;
+}
+
+.secondary{
+background:#ff7f7f;
+color:white;
 }
 
 .option{
-background:#f5f5f5;
-padding:12px;
+background:#f2f2f2;
 margin:8px 0;
+padding:12px;
 border-radius:12px;
 cursor:pointer;
 transition:0.25s;
 }
 
 .option:hover{
-transform:scale(1.03);
+transform:scale(1.04);
 }
 
 .correct{
 background:#c8f7c5;
-animation:pop 0.3s;
 }
 
 .wrong{
-background:#f8c6c6;
-animation:shake 0.3s;
+background:#ffd0d0;
 }
 
-@keyframes pop{
-0%{transform:scale(0.9)}
-100%{transform:scale(1)}
+.hidden{
+display:none;
 }
 
-@keyframes shake{
-0%{transform:translateX(0)}
-25%{transform:translateX(-5px)}
-50%{transform:translateX(5px)}
-75%{transform:translateX(-5px)}
-100%{transform:translateX(0)}
+.slide{
+animation:slide 0.4s;
+}
+
+@keyframes slide{
+from{opacity:0;transform:translateX(30px)}
+to{opacity:1;transform:translateX(0)}
+}
+
+.progress{
+height:8px;
+background:#eee;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.bar{
+height:8px;
+background:#58d5c2;
+width:0%;
+border-radius:10px;
+transition:0.4s;
 }
 
 .explanation{
-margin-top:10px;
 font-size:14px;
+margin-top:10px;
 color:#555;
-min-height:40px;
-}
-
-.next-btn{
-margin-top:15px;
-padding:12px 25px;
-background:#4caf50;
-color:white;
-border:none;
-border-radius:30px;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 6px 15px rgba(0,0,0,0.2);
-transition:0.3s;
-opacity:0.5;
-pointer-events:none;
-}
-
-.next-btn.active{
-opacity:1;
-pointer-events:auto;
-}
-
-.next-btn:hover{
-transform:scale(1.05);
 }
 
 .result{
-color:white;
 font-size:22px;
+margin-top:10px;
+}
+
+.share{
+background:#25D366;
+color:white;
+margin-top:10px;
+}
+
+.rating{
+background:#6c63ff;
+color:white;
+margin-top:10px;
 }
 
 </style>
@@ -168,30 +133,56 @@ font-size:22px;
 
 <body>
 
-<div class="quiz-container">
+<div class="app">
 
+<!-- NAME INPUT -->
+<div id="nameScreen" class="card">
 <img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
-
-<div class="top-bar">
-<div id="qnum">1 / 5</div>
-<div class="timer">⏱ <span id="time">30</span></div>
+<h3>Enter Your Name</h3>
+<input id="username" placeholder="Your name" style="padding:10px;width:90%;border-radius:8px;border:1px solid #ccc"><br><br>
+<button class="primary" onclick="startWelcome()">Continue</button>
 </div>
+
+<!-- WELCOME -->
+<div id="welcomeScreen" class="card hidden">
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
+<h2 id="welcomeText"></h2>
+<button class="primary" onclick="startQuiz()">Start Quiz</button>
+</div>
+
+<!-- QUIZ -->
+<div id="quizScreen" class="card hidden">
 
 <div class="progress">
-<div class="progress-bar" id="progress"></div>
+<div class="bar" id="progressBar"></div>
 </div>
 
-<div class="card" id="quizCard">
-
-<div class="category">English - Tenses</div>
-
-<div class="question" id="question"></div>
+<h3 id="question"></h3>
 
 <div id="options"></div>
 
 <div id="explanation" class="explanation"></div>
 
-<button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next</button>
+<br>
+<button id="nextBtn" class="primary hidden" onclick="nextQuestion()">Next Question</button>
+
+</div>
+
+<!-- RESULT -->
+<div id="resultScreen" class="card hidden">
+
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
+
+<div class="result" id="scoreText"></div>
+<div id="message"></div>
+
+<button class="share" onclick="shareWhatsApp()">Share on WhatsApp</button>
+
+<button class="rating" onclick="rateUs()">Click Me</button>
+
+<br><br>
+
+<button class="primary" onclick="restartQuiz()">Restart Quiz</button>
 
 </div>
 
@@ -199,93 +190,126 @@ font-size:22px;
 
 <script>
 
-const quiz=[
+let username=""
+
+function startWelcome(){
+username=document.getElementById("username").value
+if(!username)return
+
+localStorage.setItem("ttc_name",username)
+
+document.getElementById("nameScreen").classList.add("hidden")
+document.getElementById("welcomeScreen").classList.remove("hidden")
+
+document.getElementById("welcomeText").innerText="Welcome, TTC Champ "+username
+}
+
+const quizData=[
 {
-q:"She ____ to school every day.",
+question:"She ____ to school every day.",
 options:["go","goes","going","gone"],
-answer:1,
-explanation:"'She' is third person singular, therefore 'goes' is used."
+correctIndex:1,
+explanation:"'She' is third person singular, so we use 'goes'."
 },
 {
-q:"I ____ my homework yesterday.",
+question:"I ____ my homework yesterday.",
 options:["did","do","done","doing"],
-answer:0,
-explanation:"'Yesterday' indicates past tense, so 'did' is correct."
+correctIndex:0,
+explanation:"'Yesterday' indicates past tense so 'did' is correct."
 },
 {
-q:"They ____ playing football.",
+question:"They ____ playing football.",
 options:["is","am","are","be"],
-answer:2,
+correctIndex:2,
 explanation:"Plural subject 'they' requires 'are'."
 },
 {
-q:"We ____ dinner now.",
+question:"We ____ dinner now.",
 options:["eat","eats","are eating","ate"],
-answer:2,
+correctIndex:2,
 explanation:"'Now' indicates present continuous tense."
-},
-{
-q:"He ____ a movie tomorrow.",
-options:["watch","watched","will watch","watching"],
-answer:2,
-explanation:"'Tomorrow' indicates future tense."
 }
 ]
 
+let questions=[]
 let index=0
 let score=0
-let timer=60
-let interval
+
+function shuffle(arr){
+return arr.sort(()=>Math.random()-0.5)
+}
+
+function startQuiz(){
+
+document.getElementById("welcomeScreen").classList.add("hidden")
+document.getElementById("quizScreen").classList.remove("hidden")
+
+questions=shuffle([...quizData])
+
+loadQuestion()
+}
 
 function loadQuestion(){
 
-const q=quiz[index]
+let q=questions[index]
 
-document.getElementById("question").innerText=q.q
-document.getElementById("qnum").innerText=(index+1)+" / "+quiz.length
-document.getElementById("progress").style.width=(index/quiz.length*100)+"%"
+document.getElementById("question").innerText=q.question
 
-let optionsHTML=""
+let opts=shuffle([...q.options])
 
-q.options.forEach((opt,i)=>{
-optionsHTML+=`<div class="option" onclick="selectOption(this,${i})">${opt}</div>`
+let container=document.getElementById("options")
+container.innerHTML=""
+
+opts.forEach(opt=>{
+
+let div=document.createElement("div")
+div.className="option"
+div.innerText=opt
+
+div.onclick=()=>selectOption(div,opt,q)
+
+container.appendChild(div)
+
 })
 
-document.getElementById("options").innerHTML=optionsHTML
 document.getElementById("explanation").innerText=""
-document.getElementById("nextBtn").classList.remove("active")
+document.getElementById("nextBtn").classList.add("hidden")
 
+document.getElementById("progressBar").style.width=(index/questions.length*100)+"%"
 }
 
-function selectOption(el,i){
+function selectOption(el,opt,q){
 
-const correct=quiz[index].answer
-const options=document.querySelectorAll(".option")
+let options=document.querySelectorAll(".option")
 
 options.forEach(o=>o.onclick=null)
 
-if(i===correct){
+let correct=q.options[q.correctIndex]
+
+if(opt===correct){
 
 el.classList.add("correct")
 score++
 
 confetti({
-particleCount:120,
-spread:90,
+particleCount:80,
+spread:60,
 origin:{y:0.6}
 })
 
 }else{
 
 el.classList.add("wrong")
-options[correct].classList.add("correct")
+
+options.forEach(o=>{
+if(o.innerText===correct) o.classList.add("correct")
+})
 
 }
 
-document.getElementById("explanation").innerText=
-"Explanation: "+quiz[index].explanation
+document.getElementById("explanation").innerText="Explanation: "+q.explanation
 
-document.getElementById("nextBtn").classList.add("active")
+document.getElementById("nextBtn").classList.remove("hidden")
 
 }
 
@@ -293,51 +317,54 @@ function nextQuestion(){
 
 index++
 
-if(index>=quiz.length){
-finishQuiz()
+if(index>=questions.length){
+showResult()
 return
 }
 
 loadQuestion()
+}
+
+function showResult(){
+
+document.getElementById("quizScreen").classList.add("hidden")
+document.getElementById("resultScreen").classList.remove("hidden")
+
+document.getElementById("scoreText").innerText=score+" / "+questions.length
+
+if(score/questions.length>=0.75){
+
+document.getElementById("message").innerText=
+"Well Done, "+username+"! You're a true TTC Champ!"
+
+confetti({particleCount:200,spread:120})
+
+}else{
+
+document.getElementById("message").innerText=
+"Good try "+username+"! Keep practicing."
 
 }
 
-function finishQuiz(){
+}
 
-document.getElementById("quizCard").innerHTML=`
-<div class="result">
-🎉 Quiz Completed<br><br>
-Score: ${score} / ${quiz.length}
-</div>
-`
+function shareWhatsApp(){
 
-confetti({
-particleCount:200,
-spread:120
-})
+let text=`I scored ${score}/${questions.length} in TTC Quiz! Try it too.`
 
-clearInterval(interval)
+let url="https://wa.me/?text="+encodeURIComponent(text)
+
+window.open(url)
 
 }
 
-function startTimer(){
-
-interval=setInterval(()=>{
-
-timer--
-
-document.getElementById("time").innerText=timer
-
-if(timer<=0){
-finishQuiz()
+function rateUs(){
+window.open("https://g.page/r/YOURGOOGLERATINGLINK")
 }
 
-},1000)
-
+function restartQuiz(){
+location.reload()
 }
-
-loadQuestion()
-startTimer()
 
 </script>
 
